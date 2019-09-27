@@ -12,16 +12,14 @@ var guessesLeft = 10;
 var computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
     console.log(computerLetter);
 
-
-
 function computerChoice() {
     computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
 }
+//reset function
 function reset() {
-    
+
     userChoices = [];
     guessesLeft = 10;
-    computerChoice();
 }
 
 //user input
@@ -38,11 +36,17 @@ document.onkeyup = function(event) {
     if (userGuess === computerLetter) {
         wins++;
         document.getElementById("wins-text").innerHTML = "Wins: " + wins;
+        
         computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
+        console.log(computerLetter);
+
         alert("YOU ARE PSYCHIC!");
-       // userChoices = [];
-      //  guessesLeft = 10;
-        reset();
+        userChoices = [];
+        guessesLeft = 10;
+
+        document.getElementById("guessesleft-text").innerHTML = "Guesses Left: " + guessesLeft;
+     //   reset();
+        
         };
 
     if (userGuess !== computerLetter) {
@@ -67,6 +71,8 @@ document.onkeyup = function(event) {
 
         alert("Game Over: You are not psychic :/");
         
-        reset();
+        userChoices = [];
+        guessesLeft = 10;
+      
     };
     }
