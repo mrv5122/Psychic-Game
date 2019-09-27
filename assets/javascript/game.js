@@ -15,44 +15,39 @@ var computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoic
 function computerChoice() {
     computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
 }
-var remainingAttempts = function () {
-    document.getElementById("guessesleft-text").innerHTML = "Guesses Left: " + guessesLeft;
-    };
 
+//user input
 document.onkeyup = function(event) {
-
-    guessesLeft--;
+    
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+   
+    document.getElementById("guessesleft-text").innerHTML = "Guesses Left: " + guessesLeft;
 
     var userGuess = event.key;
     console.log(userGuess);
-
+    
     if (userGuess === computerLetter) {
         wins++;
-        GuessesLeft = 10;
-        userChoices = [];
-    };
+        document.getElementById("wins-text").innerHTML = "Wins: " + wins;
+        
+        };
 
     if (userGuess !== computerLetter) {
         userChoices.push(userGuess);
         document.getElementById("userchoices-text").innerHTML = userChoices;
         console.log(userChoices);
-    };
-
-    if (GuessesLeft === 0) {
-        losses++;
-        userChoices = [];
-        GuessesLeft = 10;
-        alert("GAME OVER");
-        alert("try again!");
-    };
-
+        guessesLeft--;    
+        };
     
-};
+   
 
-//display user attempts remaining
+    }
 
-
-    console.log(remainingAttempts);
-
-/*var newLetterToGuess = function() {
-    this. */
+/*reset computer letter upon correct guess
+newComputerLetter = function() {
+   
+    if (userGuess === computerLetter) {
+    this.computerLetter = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
+    console.log(computerLetter);
+    }; 
+} */
