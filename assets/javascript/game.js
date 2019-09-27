@@ -73,6 +73,7 @@ document.onkeyup = function(event) {
         
         userChoices = [];
         guessesLeft = 10;
-      
+       
+        document.getElementById("guessesleft-text").innerHTML = "Guesses Left: " + guessesLeft;
     };
     }
