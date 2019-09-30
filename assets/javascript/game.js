@@ -9,19 +9,22 @@ var userChoices = [];
 var guessesLeft = 10;
     
 //computer letter generator
-var computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
-    console.log(computerLetter);
-
+var computerLetter = computerChoices [Math.floor(Math.random () * computerChoices.length)];
+console.log("computer letter: " + computerLetter);
 function computerChoice() {
-    computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
+    computerLetter = computerChoices [Math.floor(Math.random () * computerChoices.length)];
+    console.log(computerLetter);
+    return computerLetter;
 }
+//end computer letter generator
+
 //reset function
 function reset() {
 
     userChoices = [];
     guessesLeft = 10;
 }
-
+//---- 
 //user input
 document.onkeyup = function(event) {
     
@@ -29,6 +32,9 @@ document.onkeyup = function(event) {
 
     var userGuess = event.key;
     console.log(userGuess);
+
+    //  var computerLetter = computerChoice();
+    console.log("computer letter: " + computerLetter);
     
     document.getElementById("guessesleft-text").innerHTML = "Guesses Left: " + guessesLeft;
     console.log(guessesLeft);
@@ -37,8 +43,8 @@ document.onkeyup = function(event) {
         wins++;
         document.getElementById("wins-text").innerHTML = "Wins: " + wins;
         
-        computerLetter = computerChoices [Math.floor(Math.random ()) * computerChoices.length];
-        console.log(computerLetter);
+        computerLetter = computerChoice();
+        
 
         alert("YOU ARE PSYCHIC!");
         userChoices = [];
@@ -55,7 +61,8 @@ document.onkeyup = function(event) {
 
         document.getElementById("userchoices-text").innerHTML = "Your guesses: " + userChoices;
        
-        console.log(userChoices);
+        console.log("computer letter: " + computerLetter);
+        console.log("userGuess: " + userGuess);
       
         guessesLeft--;    
       
